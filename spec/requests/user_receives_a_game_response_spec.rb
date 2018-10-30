@@ -7,16 +7,14 @@ describe 'As a user' do
       user_2 = create(:user)
 
       game = create(:game, player_1: user_1, player_2: user_2)
-
-      
-      get "/api/v1/games/1"
+      get "/api/v1/games/#{game.id}"
 
       result = JSON.parse(response.body)
-      expect(result["game_id"]).to eq(1)
-      expect(result["scores"].first["user_id"]).to eq(1)
-      expect(result["scores"].first["score"]).to eq(15)
-      expect(result["scores"].first["user_id"]).to eq(2)
-      expect(result["scores"].first["score"]).to eq(16)
+      expect(result["game_id"]).to eq(game.id)
+      expect(result["scores"].first["user_id"]).to eq(user_1.id)
+      expect(result["scores"].first["score"]).to eq(7)
+      expect(result["scores"].last["user_id"]).to eq(user_2.id)
+      expect(result["scores"].last["score"]).to eq(7)
     end
   end
 end

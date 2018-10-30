@@ -2,7 +2,7 @@ class GameSerializer < ActiveModel::Serializer
   attributes :game_id, :scores
 
   def game_id
-    :id
+    object.id
   end
 
   def scores
