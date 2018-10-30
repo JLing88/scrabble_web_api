@@ -6,8 +6,12 @@ class GameSerializer < ActiveModel::Serializer
   end
 
   def scores
-    {"user_id" => object.player_1_id,
-    }
+    [{user_id: object.player_1_id,
+      score:  ""
+     },
+    {user_id: object.player_1_id,
+      score: ""
+    }]
   end
 
   private
