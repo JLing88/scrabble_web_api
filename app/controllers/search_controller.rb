@@ -8,9 +8,8 @@ class SearchController < ApplicationController
       faraday.adapter Faraday.default_adapter
     end
 
-    response = conn.get("entries/en/#{word}")
+    response = conn.get("entries/en/#{word}/sentences")
     result = JSON.parse(response.body)
-  
     @search = SearchFacade.new(params[:p])
   end
 end
