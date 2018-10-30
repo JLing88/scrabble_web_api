@@ -6,6 +6,16 @@ class GameSerializer < ActiveModel::Serializer
   end
 
   def scores
+    {"user_id" => object.player_1_id,
+    }
+  end
+
+  private
+
+  def total_score(player)
+    player.plays.inject(0) do |sum, play|
+      sum += play.score
+    end
   end
 
 end
