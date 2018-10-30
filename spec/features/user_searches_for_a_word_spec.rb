@@ -9,6 +9,9 @@ feature "As a guest user" do
       click_on "Submit"
 
       expect(page).to have_content("Examples for using 'mindfulness")
+      expect(page).to have_content("Canadian: Meditation is one way to express mindfulness in a dedicated, concentrated manner.")
+      expect(page).to have_content("British: At such times, mindfulness of the practice of patience and the application of certain techniques will help us to continue generating this attitude.")
+      expect(page).to have_content("Canadian: All this in a plant with no eyes or imaging organs anybody knows about, no brain or nervous system to support mindfulness.")
     end
   end
 end

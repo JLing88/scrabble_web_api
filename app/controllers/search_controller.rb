@@ -10,6 +10,11 @@ class SearchController < ApplicationController
 
     response = conn.get("entries/en/#{word}/sentences")
     result = JSON.parse(response.body)
-    @search = SearchFacade.new(params[:p])
+    @sentences = result["results"].first["lexicalEntries"].first["sentences"].map do |sentence|
+      if sentence["regions"].include?("British") || sentence["regions"].include?("Canadian")
+        Sentence.new(sentence)
+      end
+    end.compact
+    binding.pry
   end
 end
