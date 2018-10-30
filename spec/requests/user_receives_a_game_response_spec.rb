@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a user' do
   describe 'they send a request to /api/v1/games/1' do
     it "returns the correct JSON response" do
-      get "api/v1/games/1"
+      get "/api/v1/games/1"
 
       result = JSON.parse(response.body)
       expect(result["game_id"]).to eq(1)
