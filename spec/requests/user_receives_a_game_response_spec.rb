@@ -3,6 +3,12 @@ require 'rails_helper'
 describe 'As a user' do
   describe 'they send a request to /api/v1/games/1' do
     it "returns the correct JSON response" do
+      user_1 = create(:user)
+      user_2 = create(:user)
+
+      game = create(:game, player_1: user_1, player_2: user_2)
+
+      
       get "/api/v1/games/1"
 
       result = JSON.parse(response.body)
